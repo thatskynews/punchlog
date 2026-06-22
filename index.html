@@ -635,7 +635,7 @@
             </div>
             <span class="link-arrow">›</span>
         </button>
-        <button class="link-item" onclick="openLink('https://punchlog.pages.dev/PunchLog.apk')">
+        <button class="link-item" onclick="openLink('https://punchlogcn.pages.dev/PunchLog.apk')">
             <div class="link-icon android">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 10h10v7a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-7z" fill="#3b82f6" opacity="0.18"/>
@@ -667,7 +667,7 @@
             </div>
             <span class="link-arrow">›</span>
         </button>
-        <button class="link-item" onclick="openLink('https://punchlog.pages.dev')">
+        <button class="link-item" onclick="openLink('https://punchlogcn.pages.dev')">
             <div class="link-icon" style="background:rgba(59,130,246,0.1);">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="9" stroke="#3b82f6" stroke-width="1.5"/>
@@ -1617,7 +1617,7 @@ function openLink(url){
     window.open(url,'_blank','noopener,noreferrer');
 }
 function sharePage(){
-    const url='https://punchlog.pages.dev/PunchLog.apk';
+    const url='https://punchlogcn.pages.dev/PunchLog.apk';
     if(navigator.clipboard){
         navigator.clipboard.writeText(url).then(()=>toast('已复制')).catch(()=>fbCopyShare(url));
     } else { fbCopyShare(url); }
