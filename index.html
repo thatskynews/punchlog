@@ -568,7 +568,7 @@
         </svg>
     </button>
     <div class="month-label-wrap">
-        <div class="month-label" id="month-label">2026年6月</div>
+        <div class="month-label" id="month-label" onclick="showJumpDialog()">2026年6月</div>
         <div class="month-deco">
             <div class="month-tag" id="month-tag" onclick="goToday()">当月日历</div>
         </div>
@@ -1325,6 +1325,26 @@ function goToday(){
     const dir = (tm > S.m) || (tm === S.m && ty > S.y) ? 1 : -1;
     S.y=ty; S.m=tm;
     render(dir);
+}
+
+function showJumpDialog(){
+    showDialog('','','跳转','dbtn-ok',()=>{
+        const y=parseInt(document.getElementById('dlg-year').value);
+        const m=parseInt(document.getElementById('dlg-month').value);
+        if(!y||!m||m<1||m>12){toast('请输入有效年月');return;}
+        S.y=y; S.m=m-1;
+        render(0);
+    },'取消');
+    setTimeout(()=>{
+        const msgEl=document.getElementById('dlg-msg');
+        msgEl.innerHTML=`
+            <div style="display:flex;gap:8px;align-items:center;justify-content:center;">
+                <input id="dlg-year" type="number" value="${S.y}" placeholder="年" min="2020" max="2099" style="width:80px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:8px;font-size:14px;text-align:center;outline:none;">
+                <span style="color:var(--text);font-size:16px;">年</span>
+                <input id="dlg-month" type="number" value="${S.m+1}" placeholder="月" min="1" max="12" style="width:70px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:8px;font-size:14px;text-align:center;outline:none;">
+                <span style="color:var(--text);font-size:16px;">月</span>
+            </div>`;
+    },50);
 }
 
 function openBatch(){
